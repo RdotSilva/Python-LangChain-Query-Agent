@@ -29,3 +29,11 @@ agent = OpenAIFunctionsAgent(
         run_query_tool,
     ],
 )
+
+agent_executor = AgentExecutor(
+    agent=agent,
+    verbose=True,
+    tools=[
+        run_query_tool,
+    ],
+)
