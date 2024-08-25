@@ -19,3 +19,13 @@ prompt = ChatPromptTemplate(
         MessagesPlaceholder(variable_name="agent_scratchpad"),
     ]
 )
+
+tools = [run_query_tool]
+
+agent = OpenAIFunctionsAgent(
+    llm=chat,
+    prompt=prompt,
+    tools=[
+        run_query_tool,
+    ],
+)
