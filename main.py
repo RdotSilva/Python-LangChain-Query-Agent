@@ -16,7 +16,9 @@ chat = ChatOpenAI()
 prompt = ChatPromptTemplate(
     messages=[
         HumanMessagePromptTemplate.from_template("{input}"),
-        MessagesPlaceholder(variable_name="agent_scratchpad"),
+        MessagesPlaceholder(
+            variable_name="agent_scratchpad"
+        ),  # This is similar to memory and is used to keep track of previous messages sentdddddd
     ]
 )
 
@@ -37,3 +39,5 @@ agent_executor = AgentExecutor(
         run_query_tool,
     ],
 )
+
+agent_executor("How many users are in the database?")
