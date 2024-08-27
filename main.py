@@ -9,14 +9,19 @@ from langchain.schema import SystemMessage
 from langchain.agents import OpenAIFunctionsAgent, AgentExecutor
 from dotenv import load_dotenv
 
-from tools.sql import run_query_tool
+from tools.sql import run_query_tool, list_tables
 
 load_dotenv()
 
 chat = ChatOpenAI()
+
+tables = list_tables()
+
 prompt = ChatPromptTemplate(
     messages=[
-        SystemMessage(content="You are an AI that has access to a SQLite database."),
+        SystemMessage(
+            content=f"You are an AI that has access to a SQLite database. \n{tables}"
+        ),
         HumanMessagePromptTemplate.from_template("{input}"),
         MessagesPlaceholder(
             variable_name="agent_scratchpad"
