@@ -5,6 +5,9 @@ conn = sqlite3.connect("db.sqlite")
 
 
 def list_tables():
+    """
+    Run a SQL query to fetch and return a list of all table names in the database
+    """
     c = conn.cursor()
     c.execute("SELECT name FROM sqlite_master WHERE type='table';")
     rows = c.fetchall()
