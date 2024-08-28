@@ -25,3 +25,12 @@ run_query_tool = Tool.from_function(
     description="Run a sqlite query",
     func=run_sqlite_query,
 )
+
+
+def describe_tables(table_names):
+    c = conn.cursor()
+    tables = ", ".join("'" + table + "'" for table in table_names)
+    rows = c.execute(
+        f"SELECT sql FROM sqlLite_master WHERE type='table' and name IN ({tables});"
+    )
+    return "\n".join(row[0] for row in rows if row[0] is not None)
