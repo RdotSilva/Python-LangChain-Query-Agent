@@ -37,3 +37,10 @@ def describe_tables(table_names):
         f"SELECT sql FROM sqlLite_master WHERE type='table' and name IN ({tables});"
     )
     return "\n".join(row[0] for row in rows if row[0] is not None)
+
+
+describe_tables_tool = Tool.from_function(
+    name="describe_tables",
+    description="Given a list of table names, returns the schema of those tables.",
+    func=describe_tables,
+)
