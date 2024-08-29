@@ -9,7 +9,7 @@ from langchain.schema import SystemMessage
 from langchain.agents import OpenAIFunctionsAgent, AgentExecutor
 from dotenv import load_dotenv
 
-from tools.sql import run_query_tool, list_tables
+from tools.sql import run_query_tool, list_tables, describe_tables_tool
 
 load_dotenv()
 
@@ -29,7 +29,7 @@ prompt = ChatPromptTemplate(
     ]
 )
 
-tools = [run_query_tool]
+tools = [run_query_tool, describe_tables_tool]
 
 agent = OpenAIFunctionsAgent(
     llm=chat,
@@ -47,4 +47,4 @@ agent_executor = AgentExecutor(
     ],
 )
 
-agent_executor("How many users are in the database?")
+agent_executor("How many addresses are in the database?")
