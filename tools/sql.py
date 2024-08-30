@@ -1,4 +1,6 @@
 import sqlite3
+from pydantic.v1 import BaseModel
+from typing import List
 from langchain.tools import Tool
 
 conn = sqlite3.connect("db.sqlite")
@@ -21,6 +23,10 @@ def run_sqlite_query(query):
         return c.fetchall()
     except sqlite3.OperationalError as err:
         return f"The following error occurred: {str(err)}"
+
+
+class RunQueryArgsSchema(BaseModel):
+    query: str
 
 
 run_query_tool = Tool.from_function(
