@@ -17,6 +17,12 @@ def list_tables():
 
 
 def run_sqlite_query(query):
+    """
+    Run a SQL query and return the results
+
+    Keyword arguments:
+    query -- the SQL query to run
+    """
     c = conn.cursor()
     try:
         c.execute(query)
