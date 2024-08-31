@@ -39,6 +39,7 @@ run_query_tool = Tool.from_function(
     name="run_sqlite_query",
     description="Run a sqlite query",
     func=run_sqlite_query,
+    args_schema=RunQueryArgsSchema,
 )
 
 
