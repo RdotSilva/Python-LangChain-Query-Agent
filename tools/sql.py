@@ -17,6 +17,12 @@ def list_tables():
 
 
 def run_sqlite_query(query):
+    """
+    Run a SQL query and return the results
+
+    Keyword arguments:
+    query -- the SQL query to run
+    """
     c = conn.cursor()
     try:
         c.execute(query)
@@ -33,6 +39,7 @@ run_query_tool = Tool.from_function(
     name="run_sqlite_query",
     description="Run a sqlite query",
     func=run_sqlite_query,
+    args_schema=RunQueryArgsSchema,
 )
 
 
