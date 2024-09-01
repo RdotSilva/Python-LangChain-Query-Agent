@@ -44,6 +44,12 @@ run_query_tool = Tool.from_function(
 
 
 def describe_tables(table_names):
+    """
+    Run a SQL query that will return a string that contains a list of all attributes on tables
+
+    Keyword arguments:
+    table_names -- the list of table names in the database
+    """
     c = conn.cursor()
     tables = ", ".join("'" + table + "'" for table in table_names)
     rows = c.execute(
