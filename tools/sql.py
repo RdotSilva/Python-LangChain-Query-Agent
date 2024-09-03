@@ -13,7 +13,7 @@ def list_tables():
     c = conn.cursor()
     c.execute("SELECT name FROM sqlite_master WHERE type='table';")
     rows = c.fetchall()
-    return rows
+    return "\n".join(row[0] for row in rows if row[0] is not None)
 
 
 def run_sqlite_query(query):
