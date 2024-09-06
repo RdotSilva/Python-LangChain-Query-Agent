@@ -63,7 +63,11 @@ agent_executor = AgentExecutor(
     memory=memory,
 )
 
-agent_executor(
-    "Summarize the top 5 most popular products. Write the results to a report file."
-)
+# agent_executor(
+#     "Summarize the top 5 most popular products. Write the results to a report file."
+# )
 # agent_executor("How many addresses are in the database?")
+
+# Repeat prompts used to test memory implementation
+agent_executor("How many orders are there. Write the results in an HTML report.")
+agent_executor("Repeat the exact same process for users.")
