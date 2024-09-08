@@ -8,4 +8,8 @@ def boxen_print(*args, **kwargs):
 
 class ChatModelStartHandler(BaseCallbackHandler):
     def on_chat_model_start(self, serialized, messages, **kwargs):
-        print(messages)
+        print("\n\n\n====== Sending Messages =====\n\n")
+
+        for message in messages[0]:
+            if message.type == "system":
+                boxen_print(message.content, title=message.type, color="yellow")
