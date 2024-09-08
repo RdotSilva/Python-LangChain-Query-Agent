@@ -13,3 +13,6 @@ class ChatModelStartHandler(BaseCallbackHandler):
         for message in messages[0]:
             if message.type == "system":
                 boxen_print(message.content, title=message.type, color="yellow")
+
+            elif messages.type == "human":
+                boxen_print(message.content, title=message.type, color="green")
