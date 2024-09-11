@@ -8,6 +8,13 @@ def boxen_print(*args, **kwargs):
 
 class ChatModelStartHandler(BaseCallbackHandler):
     def on_chat_model_start(self, serialized, messages, **kwargs):
+        """
+        This will run when the chat model starts
+        This will loop through the messages and pretty print each message based on the message type
+
+        Keyword arguments:
+        messages -- the messages to pretty print
+        """
         print("\n\n\n====== Sending Messages =====\n\n")
 
         for message in messages[0]:
